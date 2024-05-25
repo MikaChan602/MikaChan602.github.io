@@ -259,6 +259,8 @@ function __VLS_template() {
     ({}({ contentPosition: ("left"), }));
     (__VLS_51.slots).default;
     const __VLS_51 = __VLS_pickFunctionalComponentCtx(__VLS_46, __VLS_48);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length !== 0));
     const __VLS_52 = {}.ElButton;
     ({}.ElButton);
     ({}.ElButton);
@@ -276,7 +278,7 @@ function __VLS_template() {
         onClick: (__VLS_ctx.drawLots)
     };
     // @ts-ignore
-    [drawLots,];
+    [vShow, fixedData, drawLots,];
     (__VLS_57.slots).default;
     const __VLS_57 = __VLS_pickFunctionalComponentCtx(__VLS_52, __VLS_54);
     let __VLS_55;
