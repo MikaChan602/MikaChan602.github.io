@@ -28,15 +28,37 @@ const router = (0, vue_router_1.createRouter)({
     history: (0, vue_router_1.createWebHashHistory)(),
     routes: [
         {
-            path: '/lottery',
-            name: 'lottery',
-            component: () => Promise.resolve().then(() => __importStar(require('../views/lottery/index.vue')))
+            path: '/tools',
+            name: '小工具',
+            children: [
+                {
+                    path: '/lottery',
+                    name: 'lottery',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/lottery/index.vue')))
+                },
+                {
+                    path: '/calendar',
+                    name: '日曆',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/calendar/index.vue')))
+                }
+            ]
         },
-        {
-            path: '/calendar',
-            name: '日曆',
-            component: () => Promise.resolve().then(() => __importStar(require('../views/calendar/index.vue')))
-        }
+        // {
+        //   path:'/JSundergroundCastle',
+        //   name:'JS地下城',
+        //   children:[
+        //     {
+        //       path: '/lottery',
+        //       name: 'lottery',
+        //       component: () => import('../views/lottery/index.vue')
+        //     },
+        //     {
+        //       path: '/calendar',
+        //       name: '日曆',
+        //       component: () => import('../views/calendar/index.vue')
+        //     }
+        //   ]      
+        // }
     ]
 });
 exports.default = router;
