@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const vue_router_1 = require("vue-router");
 const router = (0, vue_router_1.createRouter)({
-    history: (0, vue_router_1.createWebHistory)(),
+    history: (0, vue_router_1.createWebHashHistory)(),
     routes: [
         {
             path: '/lottery',
