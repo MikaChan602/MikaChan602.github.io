@@ -90,6 +90,18 @@ function drawLots() {
     localStorage.setItem("listOne", JSON.stringify(listOne.data));
     localStorage.setItem("listTwo", JSON.stringify(listTwo.data));
 }
+function handleReset() {
+    console.log("重抽");
+    // 處理資料
+    listOne.data = [...listOne.data, ...listTwo.data];
+    listTwo.data = [];
+    console.log("listone", listOne.data);
+    console.log("listtwo", listTwo.data);
+    // 處理localStorage
+    localStorage.setItem("listOne", JSON.stringify(listOne.data));
+    localStorage.setItem("listTwo", JSON.stringify(listTwo.data));
+    element_plus_1.ElMessage.success("可以重抽了唷！");
+}
 (0, vue_1.onMounted)(() => {
     const one = JSON.parse(localStorage.getItem("listOne")) || [];
     const two = JSON.parse(localStorage.getItem("listTwo")) || [];
@@ -204,64 +216,7 @@ function __VLS_template() {
     const __VLS_31 = __VLS_pickFunctionalComponentCtx(__VLS_26, __VLS_28);
     let __VLS_29;
     let __VLS_30;
-    (__VLS_5.slots).default;
-    const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
-    const __VLS_34 = {}.ElDivider;
-    ({}.ElDivider);
-    ({}.ElDivider);
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    // @ts-ignore
-    [ElDivider, ElDivider,];
-    const __VLS_35 = __VLS_asFunctionalComponent(__VLS_34, new __VLS_34({ contentPosition: ("left"), }));
-    const __VLS_36 = __VLS_35({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_35));
-    ({}({ contentPosition: ("left"), }));
-    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)(Object.assign({ style: ({}) }));
-    (__VLS_ctx.fixedData.data.length);
-    // @ts-ignore
-    [fixedData,];
-    (__VLS_39.slots).default;
-    const __VLS_39 = __VLS_pickFunctionalComponentCtx(__VLS_34, __VLS_36);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
-    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.fixedData.data))) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
-        const __VLS_40 = {}.ElTag;
-        ({}.ElTag);
-        ({}.ElTag);
-        __VLS_components.ElTag;
-        __VLS_components.elTag;
-        __VLS_components.ElTag;
-        __VLS_components.elTag;
-        // @ts-ignore
-        [ElTag, ElTag,];
-        const __VLS_41 = __VLS_asFunctionalComponent(__VLS_40, new __VLS_40({ size: ("large"), effect: ("plain"), }));
-        const __VLS_42 = __VLS_41({ size: ("large"), effect: ("plain"), }, ...__VLS_functionalComponentArgsRest(__VLS_41));
-        ({}({ size: ("large"), effect: ("plain"), }));
-        (item);
-        // @ts-ignore
-        [fixedData,];
-        (__VLS_45.slots).default;
-        const __VLS_45 = __VLS_pickFunctionalComponentCtx(__VLS_40, __VLS_42);
-    }
-    const __VLS_46 = {}.ElDivider;
-    ({}.ElDivider);
-    ({}.ElDivider);
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    // @ts-ignore
-    [ElDivider, ElDivider,];
-    const __VLS_47 = __VLS_asFunctionalComponent(__VLS_46, new __VLS_46({ contentPosition: ("left"), }));
-    const __VLS_48 = __VLS_47({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_47));
-    ({}({ contentPosition: ("left"), }));
-    (__VLS_51.slots).default;
-    const __VLS_51 = __VLS_pickFunctionalComponentCtx(__VLS_46, __VLS_48);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length !== 0));
-    const __VLS_52 = {}.ElButton;
+    const __VLS_34 = {}.ElButton;
     ({}.ElButton);
     ({}.ElButton);
     __VLS_components.ElButton;
@@ -270,21 +225,100 @@ function __VLS_template() {
     __VLS_components.elButton;
     // @ts-ignore
     [ElButton, ElButton,];
-    const __VLS_53 = __VLS_asFunctionalComponent(__VLS_52, new __VLS_52(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) })));
-    const __VLS_54 = __VLS_53(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_53));
+    const __VLS_35 = __VLS_asFunctionalComponent(__VLS_34, new __VLS_34(Object.assign({ 'onClick': {} }, { type: ("success") })));
+    const __VLS_36 = __VLS_35(Object.assign({ 'onClick': {} }, { type: ("success") }), ...__VLS_functionalComponentArgsRest(__VLS_35));
+    ({}(Object.assign({ 'onClick': {} }, { type: ("success") })));
+    let __VLS_40;
+    const __VLS_41 = {
+        onClick: (__VLS_ctx.handleReset)
+    };
+    // @ts-ignore
+    [handleReset,];
+    (__VLS_39.slots).default;
+    const __VLS_39 = __VLS_pickFunctionalComponentCtx(__VLS_34, __VLS_36);
+    let __VLS_37;
+    let __VLS_38;
+    (__VLS_5.slots).default;
+    const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
+    const __VLS_42 = {}.ElDivider;
+    ({}.ElDivider);
+    ({}.ElDivider);
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    // @ts-ignore
+    [ElDivider, ElDivider,];
+    const __VLS_43 = __VLS_asFunctionalComponent(__VLS_42, new __VLS_42({ contentPosition: ("left"), }));
+    const __VLS_44 = __VLS_43({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_43));
+    ({}({ contentPosition: ("left"), }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)(Object.assign({ style: ({}) }));
+    (__VLS_ctx.fixedData.data.length);
+    // @ts-ignore
+    [fixedData,];
+    (__VLS_47.slots).default;
+    const __VLS_47 = __VLS_pickFunctionalComponentCtx(__VLS_42, __VLS_44);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.fixedData.data))) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
+        const __VLS_48 = {}.ElTag;
+        ({}.ElTag);
+        ({}.ElTag);
+        __VLS_components.ElTag;
+        __VLS_components.elTag;
+        __VLS_components.ElTag;
+        __VLS_components.elTag;
+        // @ts-ignore
+        [ElTag, ElTag,];
+        const __VLS_49 = __VLS_asFunctionalComponent(__VLS_48, new __VLS_48({ size: ("large"), effect: ("plain"), }));
+        const __VLS_50 = __VLS_49({ size: ("large"), effect: ("plain"), }, ...__VLS_functionalComponentArgsRest(__VLS_49));
+        ({}({ size: ("large"), effect: ("plain"), }));
+        (item);
+        // @ts-ignore
+        [fixedData,];
+        (__VLS_53.slots).default;
+        const __VLS_53 = __VLS_pickFunctionalComponentCtx(__VLS_48, __VLS_50);
+    }
+    const __VLS_54 = {}.ElDivider;
+    ({}.ElDivider);
+    ({}.ElDivider);
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    // @ts-ignore
+    [ElDivider, ElDivider,];
+    const __VLS_55 = __VLS_asFunctionalComponent(__VLS_54, new __VLS_54({ contentPosition: ("left"), }));
+    const __VLS_56 = __VLS_55({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_55));
+    ({}({ contentPosition: ("left"), }));
+    (__VLS_59.slots).default;
+    const __VLS_59 = __VLS_pickFunctionalComponentCtx(__VLS_54, __VLS_56);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length !== 0));
+    const __VLS_60 = {}.ElButton;
+    ({}.ElButton);
+    ({}.ElButton);
+    __VLS_components.ElButton;
+    __VLS_components.elButton;
+    __VLS_components.ElButton;
+    __VLS_components.elButton;
+    // @ts-ignore
+    [ElButton, ElButton,];
+    const __VLS_61 = __VLS_asFunctionalComponent(__VLS_60, new __VLS_60(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) })));
+    const __VLS_62 = __VLS_61(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_61));
     ({}(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) })));
-    let __VLS_58;
-    const __VLS_59 = {
+    let __VLS_66;
+    const __VLS_67 = {
         onClick: (__VLS_ctx.drawLots)
     };
     // @ts-ignore
     [vShow, fixedData, drawLots,];
-    (__VLS_57.slots).default;
-    const __VLS_57 = __VLS_pickFunctionalComponentCtx(__VLS_52, __VLS_54);
-    let __VLS_55;
-    let __VLS_56;
+    (__VLS_65.slots).default;
+    const __VLS_65 = __VLS_pickFunctionalComponentCtx(__VLS_60, __VLS_62);
+    let __VLS_63;
+    let __VLS_64;
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("twoCard") }));
-    const __VLS_60 = {}.ElCard;
+    const __VLS_68 = {}.ElCard;
     ({}.ElCard);
     ({}.ElCard);
     __VLS_components.ElCard;
@@ -293,12 +327,12 @@ function __VLS_template() {
     __VLS_components.elCard;
     // @ts-ignore
     [ElCard, ElCard,];
-    const __VLS_61 = __VLS_asFunctionalComponent(__VLS_60, new __VLS_60(Object.assign({ style: ({}) })));
-    const __VLS_62 = __VLS_61(Object.assign({ style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_61));
+    const __VLS_69 = __VLS_asFunctionalComponent(__VLS_68, new __VLS_68(Object.assign({ style: ({}) })));
+    const __VLS_70 = __VLS_69(Object.assign({ style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_69));
     ({}(Object.assign({ style: ({}) })));
     __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
     {
-        (__VLS_65.slots).header;
+        (__VLS_73.slots).header;
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("card-header") }));
         __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
     }
@@ -318,13 +352,13 @@ function __VLS_template() {
     [vShow, listOne,];
     __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
     {
-        (__VLS_65.slots).footer;
+        (__VLS_73.slots).footer;
         (__VLS_ctx.listOne.data.length);
         // @ts-ignore
         [listOne,];
     }
-    const __VLS_65 = __VLS_pickFunctionalComponentCtx(__VLS_60, __VLS_62);
-    const __VLS_66 = {}.ElCard;
+    const __VLS_73 = __VLS_pickFunctionalComponentCtx(__VLS_68, __VLS_70);
+    const __VLS_74 = {}.ElCard;
     ({}.ElCard);
     ({}.ElCard);
     __VLS_components.ElCard;
@@ -333,12 +367,12 @@ function __VLS_template() {
     __VLS_components.elCard;
     // @ts-ignore
     [ElCard, ElCard,];
-    const __VLS_67 = __VLS_asFunctionalComponent(__VLS_66, new __VLS_66({}));
-    const __VLS_68 = __VLS_67({}, ...__VLS_functionalComponentArgsRest(__VLS_67));
+    const __VLS_75 = __VLS_asFunctionalComponent(__VLS_74, new __VLS_74({}));
+    const __VLS_76 = __VLS_75({}, ...__VLS_functionalComponentArgsRest(__VLS_75));
     ({}({}));
     __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
     {
-        (__VLS_71.slots).header;
+        (__VLS_79.slots).header;
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("card-header") }));
         __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
     }
@@ -353,12 +387,12 @@ function __VLS_template() {
     }
     __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
     {
-        (__VLS_71.slots).footer;
+        (__VLS_79.slots).footer;
         (__VLS_ctx.listTwo.data.length);
         // @ts-ignore
         [listTwo,];
     }
-    const __VLS_71 = __VLS_pickFunctionalComponentCtx(__VLS_66, __VLS_68);
+    const __VLS_79 = __VLS_pickFunctionalComponentCtx(__VLS_74, __VLS_76);
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
         __VLS_styleScopedClasses['twoCard'];
         __VLS_styleScopedClasses['card-header'];
@@ -379,6 +413,7 @@ function __VLS_template() {
                 startLottery: startLottery,
                 clear: clear,
                 drawLots: drawLots,
+                handleReset: handleReset,
             };
         },
     });
