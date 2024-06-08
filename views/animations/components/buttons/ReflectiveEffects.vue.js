@@ -22,16 +22,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const vue_router_1 = require("vue-router");
-const menu_vue_1 = __importDefault(require("./components/menu.vue"));
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await Promise.resolve().then(() => __importStar(require('vue')));
-console.log("%cHello World!", "font-size:50px; color:#285943; font-family:Arial,sans-serif;background-color:#8CD790");
-console.log("%cThis is Mika.", "font-size:16px; color:#285943");
-console.log("%cMy Github Page : https://github.com/MikaChan602", "color:#285943;font-size:16px; ");
 const __VLS_fnComponent = (await Promise.resolve().then(() => __importStar(require('vue')))).defineComponent({});
 let __VLS_functionalComponentProps;
 let __VLS_modelEmitsType;
@@ -47,24 +39,9 @@ function __VLS_template() {
     // CSS variable injection end 
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    // @ts-ignore
-    [menu_vue_1.default,];
-    const __VLS_0 = __VLS_asFunctionalComponent(menu_vue_1.default, new menu_vue_1.default({}));
-    const __VLS_1 = __VLS_0({}, ...__VLS_functionalComponentArgsRest(__VLS_0));
-    ({}({}));
-    const __VLS_4 = __VLS_pickFunctionalComponentCtx(menu_vue_1.default, __VLS_1);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    const __VLS_5 = {}.RouterView;
-    ({}.RouterView);
-    __VLS_components.RouterView;
-    // @ts-ignore
-    [vue_router_1.RouterView,];
-    const __VLS_6 = __VLS_asFunctionalComponent(__VLS_5, new __VLS_5({}));
-    const __VLS_7 = __VLS_6({}, ...__VLS_functionalComponentArgsRest(__VLS_6));
-    ({}({}));
-    const __VLS_10 = __VLS_pickFunctionalComponentCtx(__VLS_5, __VLS_7);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)(Object.assign({ class: ("btn") }));
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
+        __VLS_styleScopedClasses['btn'];
     }
     var __VLS_slots;
     return __VLS_slots;
@@ -72,10 +49,7 @@ function __VLS_template() {
     let __VLS_name;
     const __VLS_internalComponent = (yield Promise.resolve().then(() => __importStar(require('vue')))).defineComponent({
         setup() {
-            return {
-                RouterView: vue_router_1.RouterView,
-                Menu: menu_vue_1.default,
-            };
+            return {};
         },
     });
 }

@@ -30,7 +30,19 @@ const vue_1 = require("vue");
 const vue_router_1 = require("vue-router");
 const router_1 = __importDefault(require("../router"));
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await Promise.resolve().then(() => __importStar(require('vue')));
-const menu = (0, vue_1.reactive)({ data: [...router_1.default.options.routes] });
+// 過濾掉meta中有隱藏屬性的值
+const filterRoutes = (routes) => {
+    return routes
+        .filter((route) => { var _a; return !((_a = route.meta) === null || _a === void 0 ? void 0 : _a.hidden); })
+        .map((route) => {
+        if (route.children) {
+            route.children = filterRoutes(route.children);
+        }
+        return route;
+    });
+};
+const filteredRoutes = filterRoutes(router_1.default.options.routes);
+const menu = (0, vue_1.reactive)({ data: filteredRoutes });
 const __VLS_fnComponent = (await Promise.resolve().then(() => __importStar(require('vue')))).defineComponent({});
 let __VLS_functionalComponentProps;
 let __VLS_modelEmitsType;

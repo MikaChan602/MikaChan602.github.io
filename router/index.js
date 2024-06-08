@@ -30,11 +30,17 @@ const router = (0, vue_router_1.createRouter)({
         {
             path: '/tools',
             name: '小工具',
+            meta: {
+                hidden: false,
+            },
             children: [
                 {
                     path: '/lottery',
                     name: 'lottery',
-                    component: () => Promise.resolve().then(() => __importStar(require('../views/lottery/index.vue')))
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/lottery/index.vue'))),
+                    meta: {
+                        hidden: false,
+                    },
                 },
                 {
                     path: '/calendar',
@@ -43,21 +49,40 @@ const router = (0, vue_router_1.createRouter)({
                 }
             ]
         },
+        {
+            path: '/animations',
+            name: '動畫',
+            children: [
+                {
+                    path: '/buttons',
+                    name: '按鈕特效',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/animations/buttons.vue')))
+                },
+                {
+                    path: '/backgrounds',
+                    name: '背景特效',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/animations/backgrounds.vue')))
+                },
+            ]
+        },
         // {
-        //   path:'/JSundergroundCastle',
-        //   name:'JS地下城',
-        //   children:[
-        //     {
-        //       path: '/lottery',
-        //       name: 'lottery',
-        //       component: () => import('../views/lottery/index.vue')
-        //     },
-        //     {
-        //       path: '/calendar',
-        //       name: '日曆',
-        //       component: () => import('../views/calendar/index.vue')
-        //     }
-        //   ]      
+        // path:'/JSundergroundCastle',
+        // name:'JS地下城',
+        // meta: {
+        //   hidden: true,
+        // },
+        // children:[
+        //   {
+        //     path: '/lottery',
+        //     name: 'lottery',
+        //     component: () => import('../views/lottery/index.vue')
+        //   },
+        //   {
+        //     path: '/calendar',
+        //     name: '日曆',
+        //     component: () => import('../views/calendar/index.vue')
+        //   }
+        // ]      
         // }
     ]
 });

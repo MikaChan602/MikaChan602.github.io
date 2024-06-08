@@ -52,24 +52,43 @@ function startLottery() {
     // 存 local storage
     localStorage.setItem("listOne", JSON.stringify(listOne.data));
     localStorage.setItem("allData", JSON.stringify(fixedData.data));
-    console.log(localStorage.getItem("allData"));
+    // console.log(localStorage.getItem("allData"));
 }
 /** 清除資料*/
 function clear() {
-    // 清除local storage
-    localStorage.setItem("listTwo", JSON.stringify([]));
-    localStorage.setItem("listOne", JSON.stringify([]));
-    localStorage.setItem("allData", JSON.stringify([]));
-    // 重製上方搜尋
-    lotteryStr.value = "";
-    lotteryList.data = [];
-    // 重製陣列
-    fixedData.data = [];
-    listOne.data = [];
-    listTwo.data = [];
-    // 重製狀態
-    showInput.value = true;
-    btnDisable.value = false;
+    element_plus_1.ElMessageBox.confirm("如確定清除資料需重新填寫資料，確定要清除嗎？", "Warning", {
+        confirmButtonText: "確定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true,
+    })
+        .then(() => {
+        (0, element_plus_1.ElMessage)({
+            type: "success",
+            message: "已清除",
+        });
+        // TODO:追加防呆
+        // 清除local storage
+        localStorage.setItem("listTwo", JSON.stringify([]));
+        localStorage.setItem("listOne", JSON.stringify([]));
+        localStorage.setItem("allData", JSON.stringify([]));
+        // 重製上方搜尋
+        lotteryStr.value = "";
+        lotteryList.data = [];
+        // 重製陣列
+        fixedData.data = [];
+        listOne.data = [];
+        listTwo.data = [];
+        // 重製狀態
+        showInput.value = true;
+        btnDisable.value = false;
+    })
+        .catch(() => {
+        (0, element_plus_1.ElMessage)({
+            type: "info",
+            message: "取消",
+        });
+    });
 }
 /** 抽籤 */
 function drawLots() {
@@ -90,17 +109,36 @@ function drawLots() {
     localStorage.setItem("listOne", JSON.stringify(listOne.data));
     localStorage.setItem("listTwo", JSON.stringify(listTwo.data));
 }
+/** 既有列表重抽 */
 function handleReset() {
     console.log("重抽");
-    // 處理資料
-    listOne.data = [...listOne.data, ...listTwo.data];
-    listTwo.data = [];
-    console.log("listone", listOne.data);
-    console.log("listtwo", listTwo.data);
-    // 處理localStorage
-    localStorage.setItem("listOne", JSON.stringify(listOne.data));
-    localStorage.setItem("listTwo", JSON.stringify(listTwo.data));
-    element_plus_1.ElMessage.success("可以重抽了唷！");
+    element_plus_1.ElMessageBox.confirm("將重設抽獎中項目，確定重製?", "Warning", {
+        confirmButtonText: "確定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true,
+    })
+        .then(() => {
+        (0, element_plus_1.ElMessage)({
+            type: "success",
+            message: "已重製",
+        });
+        // 處理資料
+        listOne.data = [...listOne.data, ...listTwo.data];
+        listTwo.data = [];
+        console.log("listone", listOne.data);
+        console.log("listtwo", listTwo.data);
+        // 處理localStorage
+        localStorage.setItem("listOne", JSON.stringify(listOne.data));
+        localStorage.setItem("listTwo", JSON.stringify(listTwo.data));
+        element_plus_1.ElMessage.success("可以重抽了唷！");
+    })
+        .catch(() => {
+        (0, element_plus_1.ElMessage)({
+            type: "info",
+            message: "取消",
+        });
+    });
 }
 (0, vue_1.onMounted)(() => {
     const one = JSON.parse(localStorage.getItem("listOne")) || [];
@@ -131,20 +169,172 @@ function __VLS_template() {
     // CSS variable injection end 
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    const __VLS_0 = {}.ElForm;
-    ({}.ElForm);
-    ({}.ElForm);
-    __VLS_components.ElForm;
-    __VLS_components.elForm;
-    __VLS_components.ElForm;
-    __VLS_components.elForm;
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("wrapper") }, { style: ({}) }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
+    const __VLS_0 = {}.ElDivider;
+    ({}.ElDivider);
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
     // @ts-ignore
-    [ElForm, ElForm,];
-    const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0(Object.assign({ labelWidth: ("auto") }, { style: ({}) })));
-    const __VLS_2 = __VLS_1(Object.assign({ labelWidth: ("auto") }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_1));
-    ({}(Object.assign({ labelWidth: ("auto") }, { style: ({}) })));
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    const __VLS_6 = {}.ElFormItem;
+    [ElDivider,];
+    const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0(Object.assign({ borderStyle: ("dashed") }, { style: ({}) })));
+    const __VLS_2 = __VLS_1(Object.assign({ borderStyle: ("dashed") }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_1));
+    ({}(Object.assign({ borderStyle: ("dashed") }, { style: ({}) })));
+    const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("wrapper") }));
+    const __VLS_6 = {}.ElRow;
+    ({}.ElRow);
+    ({}.ElRow);
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    // @ts-ignore
+    [ElRow, ElRow,];
+    const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({ gutter: ((20)), }));
+    const __VLS_8 = __VLS_7({ gutter: ((20)), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
+    ({}({ gutter: ((20)), }));
+    const __VLS_12 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_13 = __VLS_asFunctionalComponent(__VLS_12, new __VLS_12(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_14 = __VLS_13(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_13));
+    ({}(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("list") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("title") }));
+    (__VLS_ctx.fixedData.data.length);
+    // @ts-ignore
+    [fixedData,];
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("content") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.fixedData.data))) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
+        (item);
+        // @ts-ignore
+        [fixedData,];
+    }
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("none") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length === 0));
+    // @ts-ignore
+    [fixedData, vShow,];
+    (__VLS_17.slots).default;
+    const __VLS_17 = __VLS_pickFunctionalComponentCtx(__VLS_12, __VLS_14);
+    const __VLS_18 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_19 = __VLS_asFunctionalComponent(__VLS_18, new __VLS_18(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_20 = __VLS_19(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_19));
+    ({}(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("list") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("title") }));
+    (__VLS_ctx.listOne.data.length);
+    // @ts-ignore
+    [listOne,];
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("content") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.listOne.data))) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
+        (item);
+        // @ts-ignore
+        [listOne,];
+    }
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("none") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.listOne.data.length === 0));
+    // @ts-ignore
+    [vShow, listOne,];
+    (__VLS_23.slots).default;
+    const __VLS_23 = __VLS_pickFunctionalComponentCtx(__VLS_18, __VLS_20);
+    const __VLS_24 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_25 = __VLS_asFunctionalComponent(__VLS_24, new __VLS_24(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_26 = __VLS_25(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_25));
+    ({}(Object.assign({ span: ((8)), xs: ((24)) }, { style: ({}) })));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("list") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("title") }));
+    (__VLS_ctx.listTwo.data.length);
+    // @ts-ignore
+    [listTwo,];
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("content") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.listTwo.data))) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
+        (item);
+        // @ts-ignore
+        [listTwo,];
+    }
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("none") }));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.listTwo.data.length === 0));
+    // @ts-ignore
+    [vShow, listTwo,];
+    (__VLS_29.slots).default;
+    const __VLS_29 = __VLS_pickFunctionalComponentCtx(__VLS_24, __VLS_26);
+    (__VLS_11.slots).default;
+    const __VLS_11 = __VLS_pickFunctionalComponentCtx(__VLS_6, __VLS_8);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("wrapper") }, { style: ({}) }));
+    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length == 0));
+    const __VLS_30 = {}.ElDivider;
+    ({}.ElDivider);
+    ({}.ElDivider);
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    // @ts-ignore
+    [ElDivider, ElDivider,];
+    const __VLS_31 = __VLS_asFunctionalComponent(__VLS_30, new __VLS_30({ borderStyle: ("dashed"), contentPosition: ("left"), }));
+    const __VLS_32 = __VLS_31({ borderStyle: ("dashed"), contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_31));
+    ({}({ borderStyle: ("dashed"), contentPosition: ("left"), }));
+    // @ts-ignore
+    [fixedData, vShow,];
+    (__VLS_35.slots).default;
+    const __VLS_35 = __VLS_pickFunctionalComponentCtx(__VLS_30, __VLS_32);
+    const __VLS_36 = {}.ElRow;
+    ({}.ElRow);
+    ({}.ElRow);
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    // @ts-ignore
+    [ElRow, ElRow,];
+    const __VLS_37 = __VLS_asFunctionalComponent(__VLS_36, new __VLS_36({ gutter: ((20)), }));
+    const __VLS_38 = __VLS_37({ gutter: ((20)), }, ...__VLS_functionalComponentArgsRest(__VLS_37));
+    ({}({ gutter: ((20)), }));
+    const __VLS_42 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_43 = __VLS_asFunctionalComponent(__VLS_42, new __VLS_42(Object.assign({ span: ((20)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_44 = __VLS_43(Object.assign({ span: ((20)), xs: ((24)) }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_43));
+    ({}(Object.assign({ span: ((20)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_48 = {}.ElFormItem;
     ({}.ElFormItem);
     ({}.ElFormItem);
     __VLS_components.ElFormItem;
@@ -153,26 +343,38 @@ function __VLS_template() {
     __VLS_components.elFormItem;
     // @ts-ignore
     [ElFormItem, ElFormItem,];
-    const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({ label: ("請輸入獎品"), }));
-    const __VLS_8 = __VLS_7({ label: ("請輸入獎品"), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
-    ({}({ label: ("請輸入獎品"), }));
-    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.showInput));
-    const __VLS_12 = {}.ElInput;
+    const __VLS_49 = __VLS_asFunctionalComponent(__VLS_48, new __VLS_48({}));
+    const __VLS_50 = __VLS_49({}, ...__VLS_functionalComponentArgsRest(__VLS_49));
+    ({}({}));
+    const __VLS_54 = {}.ElInput;
     ({}.ElInput);
     __VLS_components.ElInput;
     __VLS_components.elInput;
     // @ts-ignore
     [ElInput,];
-    const __VLS_13 = __VLS_asFunctionalComponent(__VLS_12, new __VLS_12({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 4 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), }));
-    const __VLS_14 = __VLS_13({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 4 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), }, ...__VLS_functionalComponentArgsRest(__VLS_13));
-    ({}({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 4 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), }));
+    const __VLS_55 = __VLS_asFunctionalComponent(__VLS_54, new __VLS_54({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 5 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), disabled: ((__VLS_ctx.fixedData.data.length !== 0)), }));
+    const __VLS_56 = __VLS_55({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 5 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), disabled: ((__VLS_ctx.fixedData.data.length !== 0)), }, ...__VLS_functionalComponentArgsRest(__VLS_55));
+    ({}({ type: ("textarea"), autosize: (({ minRows: 2, maxRows: 5 })), placeholder: ("請輸入獎品，可使用,;作區隔"), modelValue: ((__VLS_ctx.lotteryStr)), disabled: ((__VLS_ctx.fixedData.data.length !== 0)), }));
     // @ts-ignore
-    [vShow, showInput, lotteryStr,];
-    const __VLS_17 = __VLS_pickFunctionalComponentCtx(__VLS_12, __VLS_14);
-    (__VLS_11.slots).default;
-    const __VLS_11 = __VLS_pickFunctionalComponentCtx(__VLS_6, __VLS_8);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    const __VLS_18 = {}.ElButton;
+    [fixedData, lotteryStr,];
+    const __VLS_59 = __VLS_pickFunctionalComponentCtx(__VLS_54, __VLS_56);
+    (__VLS_53.slots).default;
+    const __VLS_53 = __VLS_pickFunctionalComponentCtx(__VLS_48, __VLS_50);
+    (__VLS_47.slots).default;
+    const __VLS_47 = __VLS_pickFunctionalComponentCtx(__VLS_42, __VLS_44);
+    const __VLS_60 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_61 = __VLS_asFunctionalComponent(__VLS_60, new __VLS_60(Object.assign({ span: ((4)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_62 = __VLS_61(Object.assign({ span: ((4)), xs: ((24)) }, { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_61));
+    ({}(Object.assign({ span: ((4)), xs: ((24)) }, { style: ({}) })));
+    const __VLS_66 = {}.ElButton;
     ({}.ElButton);
     ({}.ElButton);
     __VLS_components.ElButton;
@@ -181,20 +383,60 @@ function __VLS_template() {
     __VLS_components.elButton;
     // @ts-ignore
     [ElButton, ElButton,];
-    const __VLS_19 = __VLS_asFunctionalComponent(__VLS_18, new __VLS_18(Object.assign({ 'onClick': {} }, { type: ("primary"), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) })));
-    const __VLS_20 = __VLS_19(Object.assign({ 'onClick': {} }, { type: ("primary"), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) }), ...__VLS_functionalComponentArgsRest(__VLS_19));
-    ({}(Object.assign({ 'onClick': {} }, { type: ("primary"), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) })));
-    let __VLS_24;
-    const __VLS_25 = {
+    const __VLS_67 = __VLS_asFunctionalComponent(__VLS_66, new __VLS_66(Object.assign({ 'onClick': {} }, { type: ("primary"), plain: (true), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) })));
+    const __VLS_68 = __VLS_67(Object.assign({ 'onClick': {} }, { type: ("primary"), plain: (true), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) }), ...__VLS_functionalComponentArgsRest(__VLS_67));
+    ({}(Object.assign({ 'onClick': {} }, { type: ("primary"), plain: (true), disabled: ((__VLS_ctx.fixedData.data.length !== 0)) })));
+    let __VLS_72;
+    const __VLS_73 = {
         onClick: (__VLS_ctx.startLottery)
     };
     // @ts-ignore
     [fixedData, startLottery,];
-    (__VLS_23.slots).default;
-    const __VLS_23 = __VLS_pickFunctionalComponentCtx(__VLS_18, __VLS_20);
-    let __VLS_21;
-    let __VLS_22;
-    const __VLS_26 = {}.ElButton;
+    (__VLS_71.slots).default;
+    const __VLS_71 = __VLS_pickFunctionalComponentCtx(__VLS_66, __VLS_68);
+    let __VLS_69;
+    let __VLS_70;
+    (__VLS_65.slots).default;
+    const __VLS_65 = __VLS_pickFunctionalComponentCtx(__VLS_60, __VLS_62);
+    (__VLS_41.slots).default;
+    const __VLS_41 = __VLS_pickFunctionalComponentCtx(__VLS_36, __VLS_38);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("wrapper") }, { style: ({}) }));
+    const __VLS_74 = {}.ElDivider;
+    ({}.ElDivider);
+    __VLS_components.ElDivider;
+    __VLS_components.elDivider;
+    // @ts-ignore
+    [ElDivider,];
+    const __VLS_75 = __VLS_asFunctionalComponent(__VLS_74, new __VLS_74({}));
+    const __VLS_76 = __VLS_75({}, ...__VLS_functionalComponentArgsRest(__VLS_75));
+    ({}({}));
+    const __VLS_79 = __VLS_pickFunctionalComponentCtx(__VLS_74, __VLS_76);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("buttons") }));
+    const __VLS_80 = {}.ElRow;
+    ({}.ElRow);
+    ({}.ElRow);
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    __VLS_components.ElRow;
+    __VLS_components.elRow;
+    // @ts-ignore
+    [ElRow, ElRow,];
+    const __VLS_81 = __VLS_asFunctionalComponent(__VLS_80, new __VLS_80({ gutter: ((20)), }));
+    const __VLS_82 = __VLS_81({ gutter: ((20)), }, ...__VLS_functionalComponentArgsRest(__VLS_81));
+    ({}({ gutter: ((20)), }));
+    const __VLS_86 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_87 = __VLS_asFunctionalComponent(__VLS_86, new __VLS_86({ span: ((8)), }));
+    const __VLS_88 = __VLS_87({ span: ((8)), }, ...__VLS_functionalComponentArgsRest(__VLS_87));
+    ({}({ span: ((8)), }));
+    const __VLS_92 = {}.ElButton;
     ({}.ElButton);
     ({}.ElButton);
     __VLS_components.ElButton;
@@ -203,20 +445,34 @@ function __VLS_template() {
     __VLS_components.elButton;
     // @ts-ignore
     [ElButton, ElButton,];
-    const __VLS_27 = __VLS_asFunctionalComponent(__VLS_26, new __VLS_26(Object.assign({ 'onClick': {} }, { type: ("danger") })));
-    const __VLS_28 = __VLS_27(Object.assign({ 'onClick': {} }, { type: ("danger") }), ...__VLS_functionalComponentArgsRest(__VLS_27));
-    ({}(Object.assign({ 'onClick': {} }, { type: ("danger") })));
-    let __VLS_32;
-    const __VLS_33 = {
+    const __VLS_93 = __VLS_asFunctionalComponent(__VLS_92, new __VLS_92(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("danger") }), { class: ("btn") })));
+    const __VLS_94 = __VLS_93(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("danger") }), { class: ("btn") }), ...__VLS_functionalComponentArgsRest(__VLS_93));
+    ({}(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("danger") }), { class: ("btn") })));
+    let __VLS_98;
+    const __VLS_99 = {
         onClick: (__VLS_ctx.clear)
     };
     // @ts-ignore
     [clear,];
-    (__VLS_31.slots).default;
-    const __VLS_31 = __VLS_pickFunctionalComponentCtx(__VLS_26, __VLS_28);
-    let __VLS_29;
-    let __VLS_30;
-    const __VLS_34 = {}.ElButton;
+    (__VLS_97.slots).default;
+    const __VLS_97 = __VLS_pickFunctionalComponentCtx(__VLS_92, __VLS_94);
+    let __VLS_95;
+    let __VLS_96;
+    (__VLS_91.slots).default;
+    const __VLS_91 = __VLS_pickFunctionalComponentCtx(__VLS_86, __VLS_88);
+    const __VLS_100 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_101 = __VLS_asFunctionalComponent(__VLS_100, new __VLS_100({ span: ((8)), }));
+    const __VLS_102 = __VLS_101({ span: ((8)), }, ...__VLS_functionalComponentArgsRest(__VLS_101));
+    ({}({ span: ((8)), }));
+    const __VLS_106 = {}.ElButton;
     ({}.ElButton);
     ({}.ElButton);
     __VLS_components.ElButton;
@@ -225,178 +481,80 @@ function __VLS_template() {
     __VLS_components.elButton;
     // @ts-ignore
     [ElButton, ElButton,];
-    const __VLS_35 = __VLS_asFunctionalComponent(__VLS_34, new __VLS_34(Object.assign({ 'onClick': {} }, { type: ("success") })));
-    const __VLS_36 = __VLS_35(Object.assign({ 'onClick': {} }, { type: ("success") }), ...__VLS_functionalComponentArgsRest(__VLS_35));
-    ({}(Object.assign({ 'onClick': {} }, { type: ("success") })));
-    let __VLS_40;
-    const __VLS_41 = {
+    const __VLS_107 = __VLS_asFunctionalComponent(__VLS_106, new __VLS_106(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("primary") }), { class: ("btn") })));
+    const __VLS_108 = __VLS_107(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("primary") }), { class: ("btn") }), ...__VLS_functionalComponentArgsRest(__VLS_107));
+    ({}(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("primary") }), { class: ("btn") })));
+    let __VLS_112;
+    const __VLS_113 = {
+        onClick: (__VLS_ctx.drawLots)
+    };
+    // @ts-ignore
+    [drawLots,];
+    (__VLS_111.slots).default;
+    const __VLS_111 = __VLS_pickFunctionalComponentCtx(__VLS_106, __VLS_108);
+    let __VLS_109;
+    let __VLS_110;
+    (__VLS_105.slots).default;
+    const __VLS_105 = __VLS_pickFunctionalComponentCtx(__VLS_100, __VLS_102);
+    const __VLS_114 = {}.ElCol;
+    ({}.ElCol);
+    ({}.ElCol);
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    __VLS_components.ElCol;
+    __VLS_components.elCol;
+    // @ts-ignore
+    [ElCol, ElCol,];
+    const __VLS_115 = __VLS_asFunctionalComponent(__VLS_114, new __VLS_114({ span: ((8)), }));
+    const __VLS_116 = __VLS_115({ span: ((8)), }, ...__VLS_functionalComponentArgsRest(__VLS_115));
+    ({}({ span: ((8)), }));
+    const __VLS_120 = {}.ElButton;
+    ({}.ElButton);
+    ({}.ElButton);
+    __VLS_components.ElButton;
+    __VLS_components.elButton;
+    __VLS_components.ElButton;
+    __VLS_components.elButton;
+    // @ts-ignore
+    [ElButton, ElButton,];
+    const __VLS_121 = __VLS_asFunctionalComponent(__VLS_120, new __VLS_120(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("success") }), { class: ("btn") })));
+    const __VLS_122 = __VLS_121(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("success") }), { class: ("btn") }), ...__VLS_functionalComponentArgsRest(__VLS_121));
+    ({}(Object.assign(Object.assign({ 'onClick': {} }, { plain: (true), type: ("success") }), { class: ("btn") })));
+    let __VLS_126;
+    const __VLS_127 = {
         onClick: (__VLS_ctx.handleReset)
     };
     // @ts-ignore
     [handleReset,];
-    (__VLS_39.slots).default;
-    const __VLS_39 = __VLS_pickFunctionalComponentCtx(__VLS_34, __VLS_36);
-    let __VLS_37;
-    let __VLS_38;
-    (__VLS_5.slots).default;
-    const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
-    const __VLS_42 = {}.ElDivider;
-    ({}.ElDivider);
-    ({}.ElDivider);
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    // @ts-ignore
-    [ElDivider, ElDivider,];
-    const __VLS_43 = __VLS_asFunctionalComponent(__VLS_42, new __VLS_42({ contentPosition: ("left"), }));
-    const __VLS_44 = __VLS_43({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_43));
-    ({}({ contentPosition: ("left"), }));
-    __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)(Object.assign({ style: ({}) }));
-    (__VLS_ctx.fixedData.data.length);
-    // @ts-ignore
-    [fixedData,];
-    (__VLS_47.slots).default;
-    const __VLS_47 = __VLS_pickFunctionalComponentCtx(__VLS_42, __VLS_44);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
-    for (const [item] of __VLS_getVForSourceType((__VLS_ctx.fixedData.data))) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
-        const __VLS_48 = {}.ElTag;
-        ({}.ElTag);
-        ({}.ElTag);
-        __VLS_components.ElTag;
-        __VLS_components.elTag;
-        __VLS_components.ElTag;
-        __VLS_components.elTag;
-        // @ts-ignore
-        [ElTag, ElTag,];
-        const __VLS_49 = __VLS_asFunctionalComponent(__VLS_48, new __VLS_48({ size: ("large"), effect: ("plain"), }));
-        const __VLS_50 = __VLS_49({ size: ("large"), effect: ("plain"), }, ...__VLS_functionalComponentArgsRest(__VLS_49));
-        ({}({ size: ("large"), effect: ("plain"), }));
-        (item);
-        // @ts-ignore
-        [fixedData,];
-        (__VLS_53.slots).default;
-        const __VLS_53 = __VLS_pickFunctionalComponentCtx(__VLS_48, __VLS_50);
-    }
-    const __VLS_54 = {}.ElDivider;
-    ({}.ElDivider);
-    ({}.ElDivider);
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    __VLS_components.ElDivider;
-    __VLS_components.elDivider;
-    // @ts-ignore
-    [ElDivider, ElDivider,];
-    const __VLS_55 = __VLS_asFunctionalComponent(__VLS_54, new __VLS_54({ contentPosition: ("left"), }));
-    const __VLS_56 = __VLS_55({ contentPosition: ("left"), }, ...__VLS_functionalComponentArgsRest(__VLS_55));
-    ({}({ contentPosition: ("left"), }));
-    (__VLS_59.slots).default;
-    const __VLS_59 = __VLS_pickFunctionalComponentCtx(__VLS_54, __VLS_56);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.fixedData.data.length !== 0));
-    const __VLS_60 = {}.ElButton;
-    ({}.ElButton);
-    ({}.ElButton);
-    __VLS_components.ElButton;
-    __VLS_components.elButton;
-    __VLS_components.ElButton;
-    __VLS_components.elButton;
-    // @ts-ignore
-    [ElButton, ElButton,];
-    const __VLS_61 = __VLS_asFunctionalComponent(__VLS_60, new __VLS_60(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) })));
-    const __VLS_62 = __VLS_61(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_61));
-    ({}(Object.assign(Object.assign({ 'onClick': {} }, { type: ("success") }), { style: ({}) })));
-    let __VLS_66;
-    const __VLS_67 = {
-        onClick: (__VLS_ctx.drawLots)
-    };
-    // @ts-ignore
-    [vShow, fixedData, drawLots,];
-    (__VLS_65.slots).default;
-    const __VLS_65 = __VLS_pickFunctionalComponentCtx(__VLS_60, __VLS_62);
-    let __VLS_63;
-    let __VLS_64;
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("twoCard") }));
-    const __VLS_68 = {}.ElCard;
-    ({}.ElCard);
-    ({}.ElCard);
-    __VLS_components.ElCard;
-    __VLS_components.elCard;
-    __VLS_components.ElCard;
-    __VLS_components.elCard;
-    // @ts-ignore
-    [ElCard, ElCard,];
-    const __VLS_69 = __VLS_asFunctionalComponent(__VLS_68, new __VLS_68(Object.assign({ style: ({}) })));
-    const __VLS_70 = __VLS_69(Object.assign({ style: ({}) }), ...__VLS_functionalComponentArgsRest(__VLS_69));
-    ({}(Object.assign({ style: ({}) })));
-    __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
-    {
-        (__VLS_73.slots).header;
-        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("card-header") }));
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-    }
-    for (const [item, key] of __VLS_getVForSourceType((__VLS_ctx.listOne.data))) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ key: ((item)), });
-        __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.listOne.data.length !== 0));
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-        (key + 1);
-        // @ts-ignore
-        [vShow, listOne, listOne,];
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-        (item);
-    }
-    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
-    __VLS_directiveFunction(__VLS_ctx.vShow)((__VLS_ctx.listOne.data.length === 0));
-    // @ts-ignore
-    [vShow, listOne,];
-    __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
-    {
-        (__VLS_73.slots).footer;
-        (__VLS_ctx.listOne.data.length);
-        // @ts-ignore
-        [listOne,];
-    }
-    const __VLS_73 = __VLS_pickFunctionalComponentCtx(__VLS_68, __VLS_70);
-    const __VLS_74 = {}.ElCard;
-    ({}.ElCard);
-    ({}.ElCard);
-    __VLS_components.ElCard;
-    __VLS_components.elCard;
-    __VLS_components.ElCard;
-    __VLS_components.elCard;
-    // @ts-ignore
-    [ElCard, ElCard,];
-    const __VLS_75 = __VLS_asFunctionalComponent(__VLS_74, new __VLS_74({}));
-    const __VLS_76 = __VLS_75({}, ...__VLS_functionalComponentArgsRest(__VLS_75));
-    ({}({}));
-    __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
-    {
-        (__VLS_79.slots).header;
-        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(Object.assign({ class: ("card-header") }));
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-    }
-    for (const [item2, key] of __VLS_getVForSourceType((__VLS_ctx.listTwo.data))) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ key: ((key)), });
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-        (key + 1);
-        // @ts-ignore
-        [listTwo,];
-        __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({});
-        (item2);
-    }
-    __VLS_elementAsFunction(__VLS_intrinsicElements.template, __VLS_intrinsicElements.template)({});
-    {
-        (__VLS_79.slots).footer;
-        (__VLS_ctx.listTwo.data.length);
-        // @ts-ignore
-        [listTwo,];
-    }
-    const __VLS_79 = __VLS_pickFunctionalComponentCtx(__VLS_74, __VLS_76);
+    (__VLS_125.slots).default;
+    const __VLS_125 = __VLS_pickFunctionalComponentCtx(__VLS_120, __VLS_122);
+    let __VLS_123;
+    let __VLS_124;
+    (__VLS_119.slots).default;
+    const __VLS_119 = __VLS_pickFunctionalComponentCtx(__VLS_114, __VLS_116);
+    (__VLS_85.slots).default;
+    const __VLS_85 = __VLS_pickFunctionalComponentCtx(__VLS_80, __VLS_82);
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
-        __VLS_styleScopedClasses['twoCard'];
-        __VLS_styleScopedClasses['card-header'];
-        __VLS_styleScopedClasses['card-header'];
+        __VLS_styleScopedClasses['wrapper'];
+        __VLS_styleScopedClasses['wrapper'];
+        __VLS_styleScopedClasses['list'];
+        __VLS_styleScopedClasses['title'];
+        __VLS_styleScopedClasses['content'];
+        __VLS_styleScopedClasses['none'];
+        __VLS_styleScopedClasses['list'];
+        __VLS_styleScopedClasses['title'];
+        __VLS_styleScopedClasses['content'];
+        __VLS_styleScopedClasses['none'];
+        __VLS_styleScopedClasses['list'];
+        __VLS_styleScopedClasses['title'];
+        __VLS_styleScopedClasses['content'];
+        __VLS_styleScopedClasses['none'];
+        __VLS_styleScopedClasses['wrapper'];
+        __VLS_styleScopedClasses['wrapper'];
+        __VLS_styleScopedClasses['buttons'];
+        __VLS_styleScopedClasses['btn'];
+        __VLS_styleScopedClasses['btn'];
+        __VLS_styleScopedClasses['btn'];
     }
     var __VLS_slots;
     return __VLS_slots;
@@ -407,7 +565,6 @@ function __VLS_template() {
             return {
                 lotteryStr: lotteryStr,
                 fixedData: fixedData,
-                showInput: showInput,
                 listOne: listOne,
                 listTwo: listTwo,
                 startLottery: startLottery,
