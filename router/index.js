@@ -36,7 +36,7 @@ const router = (0, vue_router_1.createRouter)({
             children: [
                 {
                     path: '/lottery',
-                    name: 'lottery',
+                    name: '抽獎',
                     component: () => Promise.resolve().then(() => __importStar(require('../views/lottery/index.vue'))),
                     meta: {
                         hidden: false,
@@ -52,6 +52,9 @@ const router = (0, vue_router_1.createRouter)({
         {
             path: '/animations',
             name: '動畫',
+            meta: {
+                hidden: true,
+            },
             children: [
                 {
                     path: '/buttons',
@@ -65,25 +68,36 @@ const router = (0, vue_router_1.createRouter)({
                 },
             ]
         },
-        // {
-        // path:'/JSundergroundCastle',
-        // name:'JS地下城',
-        // meta: {
-        //   hidden: true,
-        // },
-        // children:[
-        //   {
-        //     path: '/lottery',
-        //     name: 'lottery',
-        //     component: () => import('../views/lottery/index.vue')
-        //   },
-        //   {
-        //     path: '/calendar',
-        //     name: '日曆',
-        //     component: () => import('../views/calendar/index.vue')
-        //   }
-        // ]      
-        // }
+        {
+            path: '/undergroundCastle',
+            name: 'JS地下城',
+            meta: {
+                hidden: false,
+            },
+            children: [
+                {
+                    path: '/groundFloor',
+                    name: '第一層',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/undergroundCastle/groundFloor.vue')))
+                },
+                {
+                    path: '/firstFloor',
+                    name: '第二層',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/undergroundCastle/firstFloor.vue'))),
+                    meta: {
+                        hidden: true,
+                    },
+                },
+                {
+                    path: '/secondFloor',
+                    name: '第三層',
+                    component: () => Promise.resolve().then(() => __importStar(require('../views/undergroundCastle/secondFloor.vue'))),
+                    meta: {
+                        hidden: true,
+                    },
+                },
+            ]
+        }
     ]
 });
 exports.default = router;
