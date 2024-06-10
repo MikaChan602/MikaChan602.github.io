@@ -85,7 +85,7 @@ const router = (0, vue_router_1.createRouter)({
                     name: '第二層',
                     component: () => Promise.resolve().then(() => __importStar(require('../views/undergroundCastle/firstFloor.vue'))),
                     meta: {
-                        hidden: true,
+                        hidden: false,
                     },
                 },
                 {
