@@ -30,7 +30,7 @@ const vue_router_1 = require("vue-router");
 const menu_vue_1 = __importDefault(require("./components/menu.vue"));
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await Promise.resolve().then(() => __importStar(require('vue')));
 console.log("%cHello World!", "font-size:50px; color:#285943; font-family:Arial,sans-serif;background-color:#8CD790");
-console.log("%cThis is Mika.", "font-size:16px; color:#285943");
+console.log("%cIt's Mika.", "font-size:16px; color:#285943");
 console.log("%cMy Github Page : https://github.com/MikaChan602", "color:#285943;font-size:16px; ");
 const __VLS_fnComponent = (await Promise.resolve().then(() => __importStar(require('vue')))).defineComponent({});
 let __VLS_functionalComponentProps;
